@@ -1,6 +1,6 @@
 # Workbench Hut
 
-A Valheim mod that adds a **Workbench Hut** to the hammer — a small wooden shelter with a functional workbench inside, placed in one build action.
+A Valheim mod that adds a **Workbench Hut** to the hammer — a compact open-front wooden shed with a functional workbench inside, placed in one build action.
 
 ## Requirements
 
@@ -10,23 +10,21 @@ A Valheim mod that adds a **Workbench Hut** to the hammer — a small wooden she
 ## Installation
 
 1. Install BepInEx and Jötunn if you have not already.
-2. Copy the mod DLL from the build output:
+2. Download the latest release from [GitHub Releases](https://github.com/Darknetzz/valheim-workbench-hut/releases).
+3. Extract the `WorkbenchHut` folder into your Valheim plugins directory:
 
-   `D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+   `Valheim/BepInEx/plugins/WorkbenchHut/`
 
-   …into your Valheim plugins folder (create the `WorkbenchHut` subfolder if needed):
-
-   `C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
-
-3. Launch the game and enter a world.
+   You should end up with `WorkbenchHut.dll` and a `Translations` folder inside that directory.
+4. Launch the game and enter a world.
 
 ## In-game usage
 
 1. Equip the **hammer**.
 2. Open the build menu.
 3. Go to the **Crafting** tab.
-4. Select **Workbench Hut** (32 Wood, 1 Stone, 2 Resin).
-5. Place it — you get a complete hut with a workbench inside.
+4. Select **Workbench Hut** (14 Wood, 1 Stone).
+5. Place it — you get walls, roof, and a workbench in one structure.
 
 Interact with the workbench to craft as usual. The hut is one structure; removing it removes the whole thing.
 
@@ -37,13 +35,11 @@ Interact with the workbench to craft as usual. The hut is one structure; removin
 3. Copy `Environment.props.example` to `Environment.props` and set your Valheim install path.
 4. Open `WorkbenchHut.sln` and build **Release**.
 
-After a **Release** build, the DLL is at:
+After a **Release** build, the output is at:
 
-`D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+`WorkbenchHut/bin/Release/net48/`
 
-A **Debug** build copies it automatically to:
-
-`C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
+Copy `WorkbenchHut.dll` and the `Translations` folder into `BepInEx/plugins/WorkbenchHut/`. A post-build script can also deploy to your Valheim folder if `Environment.props` is configured.
 
 ## Multiplayer
 
