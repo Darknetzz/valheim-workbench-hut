@@ -12,7 +12,7 @@ namespace WorkbenchHut
     {
         public const string PluginGuid = "kriss.workbenchhut";
         public const string PluginName = "Workbench Hut";
-        public const string PluginVersion = "1.1.0";
+        public const string PluginVersion = "1.1.1";
 
         public static CustomLocalization Localization;
 

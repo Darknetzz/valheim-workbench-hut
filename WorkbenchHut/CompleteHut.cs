@@ -23,23 +23,37 @@ namespace WorkbenchHut
             config.AddRequirement("Stone", 1, true);
             config.AddRequirement("Resin", 2, true);
 
-            var hut = new CustomPiece(PieceName, "DevHouseStart", config);
-            PrepareHousePrefab(hut.PiecePrefab);
+            // piece_workbench has the required Piece + CraftingStation components.
+            var hut = new CustomPiece(PieceName, "piece_workbench", config);
+
+            var houseVisual = PrefabManager.Instance.CreateClonedPrefab($"{PieceName}_visual", "DevHouseStart");
+            PrepareHouseVisual(houseVisual);
+            houseVisual.transform.SetParent(hut.PiecePrefab.transform, false);
+            houseVisual.transform.localPosition = new Vector3(0f, 0f, 1.5f);
+            houseVisual.transform.localRotation = Quaternion.identity;
+
             PieceManager.Instance.AddPiece(hut);
         }
 
-        private static void PrepareHousePrefab(GameObject root)
+        private static void PrepareHouseVisual(GameObject house)
         {
-            // DevHouseStart is a complete vanilla starter shack (floor, walls, roof, workbench).
-            // Remove world-only components that break player building.
-            StripComponentsByTypeName(root, "Location", "TerrainModifier", "MusicLocation");
+            StripComponentsByTypeName(
+                house,
+                "Location",
+                "TerrainModifier",
+                "MusicLocation",
+                "Piece",
+                "WearNTear",
+                "ZNetView",
+                "ZSyncTransform",
+                "CraftingStation");
 
-            // Optional extras in the dev house — keep only the shelter + workbench.
-            RemoveChildIfNameContains(root, "bed");
-            RemoveChildIfNameContains(root, "cooking");
-            RemoveChildIfNameContains(root, "firepit");
-            RemoveChildIfNameContains(root, "campfire");
-            RemoveChildIfNameContains(root, "hearth");
+            // DevHouseStart includes its own workbench — remove it so the root workbench is used.
+            RemoveChildIfNameContains(house, "piece_workbench");
+            RemoveChildIfNameContains(house, "bed");
+            RemoveChildIfNameContains(house, "cooking");
+            RemoveChildIfNameContains(house, "firepit");
+            RemoveChildIfNameContains(house, "campfire");
         }
 
         private static void StripComponentsByTypeName(GameObject go, params string[] typeNames)
