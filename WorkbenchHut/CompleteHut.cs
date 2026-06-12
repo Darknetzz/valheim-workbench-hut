@@ -16,52 +16,33 @@ namespace WorkbenchHut
                 Name = "$piece_workbench_hut",
                 Description = "$piece_workbench_hut_description",
                 PieceTable = PieceTables.Hammer,
-                Category = WorkbenchHutPlugin.HutCategory,
+                Category = PieceCategories.Crafting,
             };
 
             config.AddRequirement("Wood", 32, true);
             config.AddRequirement("Stone", 1, true);
             config.AddRequirement("Resin", 2, true);
 
-            var hut = new CustomPiece(PieceName, "piece_workbench", config);
-            AssembleHutVisuals(hut.PiecePrefab);
+            var hut = new CustomPiece(PieceName, "DevHouseStart", config);
+            PrepareHousePrefab(hut.PiecePrefab);
             PieceManager.Instance.AddPiece(hut);
         }
 
-        private static void AssembleHutVisuals(GameObject root)
+        private static void PrepareHousePrefab(GameObject root)
         {
-            // 4x4m footprint (2x2 floor tiles), three walls, roof, open front. Workbench stays on the root.
-            AddVisual(root, "wood_floor_1x1", "floor_sw", new Vector3(-1f, 0f, -1f), Quaternion.identity);
-            AddVisual(root, "wood_floor_1x1", "floor_se", new Vector3(1f, 0f, -1f), Quaternion.identity);
-            AddVisual(root, "wood_floor_1x1", "floor_nw", new Vector3(-1f, 0f, 1f), Quaternion.identity);
-            AddVisual(root, "wood_floor_1x1", "floor_ne", new Vector3(1f, 0f, 1f), Quaternion.identity);
+            // DevHouseStart is a complete vanilla starter shack (floor, walls, roof, workbench).
+            // Remove world-only components that break player building.
+            StripComponentsByTypeName(root, "Location", "TerrainModifier", "MusicLocation");
 
-            AddVisual(root, "woodwall", "wall_back", new Vector3(0f, 0f, -2f), Quaternion.identity);
-            AddVisual(root, "woodwall", "wall_left", new Vector3(-2f, 0f, 0f), Quaternion.Euler(0f, 90f, 0f));
-            AddVisual(root, "woodwall", "wall_right", new Vector3(2f, 0f, 0f), Quaternion.Euler(0f, 270f, 0f));
-
-            AddVisual(root, "wood_roof_45", "roof_w", new Vector3(-0.75f, 2f, 0f), Quaternion.Euler(0f, 90f, 0f));
-            AddVisual(root, "wood_roof_45", "roof_e", new Vector3(0.75f, 2f, 0f), Quaternion.Euler(0f, 270f, 0f));
-            AddVisual(root, "wood_roof_top_45", "roof_peak", new Vector3(0f, 2.75f, 0f), Quaternion.identity);
+            // Optional extras in the dev house — keep only the shelter + workbench.
+            RemoveChildIfNameContains(root, "bed");
+            RemoveChildIfNameContains(root, "cooking");
+            RemoveChildIfNameContains(root, "firepit");
+            RemoveChildIfNameContains(root, "campfire");
+            RemoveChildIfNameContains(root, "hearth");
         }
 
-        private static void AddVisual(
-            GameObject parent,
-            string sourcePrefab,
-            string childName,
-            Vector3 localPosition,
-            Quaternion localRotation)
-        {
-            var visual = PrefabManager.Instance.CreateClonedPrefab($"{PieceName}_{childName}", sourcePrefab);
-            StripBuildingComponents(visual);
-            visual.name = childName;
-            visual.transform.SetParent(parent.transform, false);
-            visual.transform.localPosition = localPosition;
-            visual.transform.localRotation = localRotation;
-            visual.transform.localScale = Vector3.one;
-        }
-
-        private static void StripBuildingComponents(GameObject go)
+        private static void StripComponentsByTypeName(GameObject go, params string[] typeNames)
         {
             foreach (var component in go.GetComponentsInChildren<Component>(true))
             {
@@ -70,10 +51,29 @@ namespace WorkbenchHut
                     continue;
                 }
 
-                var typeName = component.GetType().Name;
-                if (typeName is "Piece" or "WearNTear" or "ZNetView" or "ZSyncTransform")
+                foreach (var typeName in typeNames)
                 {
-                    Object.Destroy(component);
+                    if (component.GetType().Name == typeName)
+                    {
+                        Object.Destroy(component);
+                        break;
+                    }
+                }
+            }
+        }
+
+        private static void RemoveChildIfNameContains(GameObject root, string namePart)
+        {
+            foreach (var transform in root.GetComponentsInChildren<Transform>(true))
+            {
+                if (transform == root.transform)
+                {
+                    continue;
+                }
+
+                if (transform.name.ToLowerInvariant().Contains(namePart))
+                {
+                    Object.Destroy(transform.gameObject);
                 }
             }
         }

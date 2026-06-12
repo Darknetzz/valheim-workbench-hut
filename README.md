@@ -1,6 +1,6 @@
 # Workbench Hut
 
-A Valheim mod that adds a **Workbench Hut** to the hammer — place a complete small wooden shelter (walls, roof, and workbench) in a single build action. Individual hut pieces are also available if you prefer to build it yourself.
+A Valheim mod that adds a **Workbench Hut** to the hammer — a small wooden shelter with a functional workbench inside, placed in one build action.
 
 ## Requirements
 
@@ -22,30 +22,13 @@ A Valheim mod that adds a **Workbench Hut** to the hammer — place a complete s
 
 ## In-game usage
 
-Open the hammer and select the **Workbench Hut** category.
+1. Equip the **hammer**.
+2. Open the build menu.
+3. Go to the **Crafting** tab.
+4. Select **Workbench Hut** (32 Wood, 1 Stone, 2 Resin).
+5. Place it — you get a complete hut with a workbench inside.
 
-### Workbench Hut (single piece)
-
-Place **Workbench Hut** once to spawn a 4×4 m shelter with three walls, a roof, an open front, and a **fully functional workbench** inside.
-
-| Materials |
-|-----------|
-| 32 Wood, 1 Stone, 2 Resin |
-
-Interact with the workbench inside to craft as usual. The hut is one combined structure — removing it removes the whole thing.
-
-### Individual pieces (optional)
-
-You can also build a hut piece by piece:
-
-| Piece | Materials |
-|-------|-----------|
-| Hut Floor | 2 Wood |
-| Hut Wall | 2 Wood |
-| Hut Roof | 2 Wood |
-| Hut Roof Peak | 2 Wood |
-| Hut Door | 4 Wood, 2 Resin |
-| Hut Workbench | 2 Wood, 1 Stone |
+Interact with the workbench to craft as usual. The hut is one structure; removing it removes the whole thing.
 
 ## Building from source
 

@@ -1,6 +1,6 @@
 # Workbench Hut
 
-A Valheim mod that adds a **Workbench Hut** building kit to the hammer. Build a small wooden shelter with walls, a roof, a door, and a functional workbench inside.
+A Valheim mod that adds a **Workbench Hut** to the hammer — place a complete small wooden shelter (walls, roof, and workbench) in a single build action. Individual hut pieces are also available if you prefer to build it yourself.
 
 ## Requirements
 
@@ -10,12 +10,33 @@ A Valheim mod that adds a **Workbench Hut** building kit to the hammer. Build a 
 ## Installation
 
 1. Install BepInEx and Jötunn if you have not already.
-2. Copy `WorkbenchHut.dll` into `BepInEx/plugins/`.
+2. Copy the mod DLL from the build output:
+
+   `D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+
+   …into your Valheim plugins folder (create the `WorkbenchHut` subfolder if needed):
+
+   `C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
+
 3. Launch the game and enter a world.
 
 ## In-game usage
 
-Open the hammer and select the **Workbench Hut** category. The kit includes:
+Open the hammer and select the **Workbench Hut** category.
+
+### Workbench Hut (single piece)
+
+Place **Workbench Hut** once to spawn a 4×4 m shelter with three walls, a roof, an open front, and a **fully functional workbench** inside.
+
+| Materials |
+|-----------|
+| 32 Wood, 1 Stone, 2 Resin |
+
+Interact with the workbench inside to craft as usual. The hut is one combined structure — removing it removes the whole thing.
+
+### Individual pieces (optional)
+
+You can also build a hut piece by piece:
 
 | Piece | Materials |
 |-------|-----------|
@@ -26,14 +47,6 @@ Open the hammer and select the **Workbench Hut** category. The kit includes:
 | Hut Door | 4 Wood, 2 Resin |
 | Hut Workbench | 2 Wood, 1 Stone |
 
-### Suggested 2×2 hut layout
-
-1. Place **4 Hut Floor** tiles in a 2×2 square.
-2. Build **Hut Wall** pieces on three sides.
-3. Add a **Hut Door** on the open side.
-4. Cap the roof with **Hut Roof** sections and a **Hut Roof Peak** at the top.
-5. Place the **Hut Workbench** inside — it works like a normal workbench for crafting.
-
 ## Building from source
 
 1. Install Visual Studio 2022 with the .NET desktop workload.
@@ -41,7 +54,13 @@ Open the hammer and select the **Workbench Hut** category. The kit includes:
 3. Copy `Environment.props.example` to `Environment.props` and set your Valheim install path.
 4. Open `WorkbenchHut.sln` and build **Release**.
 
-The DLL is copied to `BepInEx/plugins/` automatically on build (Windows).
+After a **Release** build, the DLL is at:
+
+`D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+
+A **Debug** build copies it automatically to:
+
+`C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
 
 ## Multiplayer
 

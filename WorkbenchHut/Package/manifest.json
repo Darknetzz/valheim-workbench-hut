@@ -1,7 +1,7 @@
 ﻿{
   "name": "WorkbenchHut",
-  "description": "Adds a Workbench Hut building kit to the hammer: walls, roof, door, floor, and a workbench.",
-  "version_number": "1.0.0",
+  "description": "Adds a Workbench Hut to the hammer Crafting tab — place a complete hut with workbench in one go.",
+  "version_number": "1.1.0",
   "website_url": "https://github.com/kriss/valheim-workbench-hut",
   "dependencies": [
     "denikson-BepInExPack_Valheim-5.4.2333",
