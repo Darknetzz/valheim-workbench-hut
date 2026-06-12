@@ -2,6 +2,8 @@
 
 A Valheim mod that adds a **Workbench Hut** to the hammer — a compact open-front wooden shed with a functional workbench inside, placed in one build action.
 
+![Workbench Hut in-game](images/2026-06-12_07-28-13.png)
+
 ## Requirements
 
 - [BepInEx Pack for Valheim](https://valheim.thunderstore.io/package/denikson/BepInExPack_Valheim/)
