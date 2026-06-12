@@ -19,7 +19,7 @@ namespace WorkbenchHut
                 Category = PieceCategories.Crafting,
             };
 
-            config.AddRequirement("Wood", 16, true);
+            config.AddRequirement("Wood", 14, true);
             config.AddRequirement("Stone", 1, true);
 
             var hut = new CustomPiece(PieceName, "piece_workbench", config);
@@ -34,11 +34,14 @@ namespace WorkbenchHut
             structure.transform.localPosition = new Vector3(0f, 0f, -0.25f);
             structure.transform.localRotation = Quaternion.identity;
 
-            // Compact 2x2 m open-front shed around the workbench.
-            AddVisual(structure, "wood_floor_1x1", "floor", Vector3.zero, Quaternion.identity);
-            AddVisual(structure, "wood_wall_roof_45", "wall_back", new Vector3(0f, 0f, -1f), Quaternion.identity);
-            AddVisual(structure, "wood_wall_roof_45", "wall_left", new Vector3(-1f, 0f, 0f), Quaternion.Euler(0f, 90f, 0f));
-            AddVisual(structure, "wood_wall_roof_45", "wall_right", new Vector3(1f, 0f, 0f), Quaternion.Euler(0f, 270f, 0f));
+            // Open-front 2x2 m shed: three walls + peaked roof, no floor.
+            AddVisual(structure, "woodwall", "wall_back", new Vector3(0f, 0f, -1f), Quaternion.identity);
+            AddVisual(structure, "woodwall", "wall_left", new Vector3(-1f, 0f, 0f), Quaternion.Euler(0f, 90f, 0f));
+            AddVisual(structure, "woodwall", "wall_right", new Vector3(1f, 0f, 0f), Quaternion.Euler(0f, 270f, 0f));
+
+            AddVisual(structure, "wood_roof_45", "roof_w", new Vector3(-1f, 2f, 0f), Quaternion.Euler(0f, 270f, 0f));
+            AddVisual(structure, "wood_roof_45", "roof_e", new Vector3(1f, 2f, 0f), Quaternion.Euler(0f, 90f, 0f));
+            AddVisual(structure, "wood_roof_top_45", "roof_peak", new Vector3(0f, 2.75f, 0f), Quaternion.identity);
         }
 
         private static void AddVisual(
