@@ -63,19 +63,18 @@ namespace WorkbenchHut
 
         private static void StripBuildingComponents(GameObject go)
         {
-            foreach (var piece in go.GetComponentsInChildren<Piece>(true))
+            foreach (var component in go.GetComponentsInChildren<Component>(true))
             {
-                Object.Destroy(piece);
-            }
+                if (component == null)
+                {
+                    continue;
+                }
 
-            foreach (var wear in go.GetComponentsInChildren<WearNTear>(true))
-            {
-                Object.Destroy(wear);
-            }
-
-            foreach (var netView in go.GetComponentsInChildren<ZNetView>(true))
-            {
-                Object.Destroy(netView);
+                var typeName = component.GetType().Name;
+                if (typeName is "Piece" or "WearNTear" or "ZNetView" or "ZSyncTransform")
+                {
+                    Object.Destroy(component);
+                }
             }
         }
     }

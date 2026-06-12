@@ -1,5 +1,7 @@
 {
   "jotunn_cat_workbench hut": "Workbench Hut",
+  "piece_workbench_hut": "Workbench Hut",
+  "piece_workbench_hut_description": "A small wooden hut with walls, roof, and a workbench inside. Place it in one go.",
   "piece_workbench_hut_floor": "Hut Floor",
   "piece_workbench_hut_floor_description": "A wooden floor tile for your workbench hut.",
   "piece_workbench_hut_wall": "Hut Wall",
