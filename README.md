@@ -10,7 +10,14 @@ A Valheim mod that adds a **Workbench Hut** to the hammer — place a complete s
 ## Installation
 
 1. Install BepInEx and Jötunn if you have not already.
-2. Copy `WorkbenchHut.dll` into `BepInEx/plugins/`.
+2. Copy the mod DLL from the build output:
+
+   `D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+
+   …into your Valheim plugins folder (create the `WorkbenchHut` subfolder if needed):
+
+   `C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
+
 3. Launch the game and enter a world.
 
 ## In-game usage
@@ -47,7 +54,13 @@ You can also build a hut piece by piece:
 3. Copy `Environment.props.example` to `Environment.props` and set your Valheim install path.
 4. Open `WorkbenchHut.sln` and build **Release**.
 
-The DLL is copied to `BepInEx/plugins/` automatically on build (Windows).
+After a **Release** build, the DLL is at:
+
+`D:\Kriss\Documents\Git\valheim-workbench-hut\WorkbenchHut\bin\Release\net48\WorkbenchHut.dll`
+
+A **Debug** build copies it automatically to:
+
+`C:\Program Files (x86)\Steam\steamapps\common\Valheim\BepInEx\plugins\WorkbenchHut\WorkbenchHut.dll`
 
 ## Multiplayer
 
