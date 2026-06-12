@@ -12,7 +12,7 @@ namespace WorkbenchHut
     {
         public const string PluginGuid = "kriss.workbenchhut";
         public const string PluginName = "Workbench Hut";
-        public const string PluginVersion = "1.1.1";
+        public const string PluginVersion = "1.1.2";
 
         public static CustomLocalization Localization;
 
@@ -30,7 +30,7 @@ namespace WorkbenchHut
             Localization.AddTranslation("English", new System.Collections.Generic.Dictionary<string, string>
             {
                 { "piece_workbench_hut", "Workbench Hut" },
-                { "piece_workbench_hut_description", "A small wooden hut with a workbench inside." },
+                { "piece_workbench_hut_description", "A compact open-front shed with a workbench inside." },
             });
         }
 
